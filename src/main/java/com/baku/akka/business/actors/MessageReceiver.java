@@ -21,8 +21,8 @@ public class MessageReceiver extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(Message.class, msg -> {
-                    messageBroker.tell(msg, noSender());
+                .match(Message.class, message -> {
+                    messageBroker.tell(message, noSender());
                 })
                 .build();
     }

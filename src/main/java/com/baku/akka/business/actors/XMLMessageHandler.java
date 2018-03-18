@@ -17,8 +17,8 @@ public class XMLMessageHandler extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(XMLMessage.class, msg -> {
-                    log.info("XMLMessageHandler got XMLMessage - " + msg.getMessage());
+                .match(XMLMessage.class, message -> {
+                    log.info("XMLMessageHandler got XMLMessage - " + message.getPayload());
                 })
                 .build();
     }

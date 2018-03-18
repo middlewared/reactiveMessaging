@@ -17,8 +17,8 @@ public class StringMessageHandler extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(StringMessage.class, msg -> {
-                    log.info("StringMessageHandler got StringMessage - " + msg.getMessage());
+                .match(StringMessage.class, message -> {
+                    log.info("StringMessageHandler got StringMessage - " + message.getPayload());
                 })
                 .build();
     }

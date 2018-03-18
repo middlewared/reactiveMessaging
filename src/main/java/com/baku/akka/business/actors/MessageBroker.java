@@ -12,7 +12,6 @@ public class MessageBroker extends AbstractActor {
     private final ActorRef stringMessageHandler;
     private final ActorRef xmlMessageHandler;
     
-
     static public Props props(ActorRef stringMessageHandler, ActorRef xmlMessageHandler) {
         return Props.create(MessageBroker.class, () -> new MessageBroker(stringMessageHandler, xmlMessageHandler));
     }
@@ -25,11 +24,11 @@ public class MessageBroker extends AbstractActor {
     @Override
     public Receive createReceive() {
         return receiveBuilder()
-                .match(XMLMessage.class, msg -> {
-                    xmlMessageHandler.tell(msg, noSender());
+                .match(XMLMessage.class, message -> {
+                    xmlMessageHandler.tell(message, noSender());
                 })
-                .match(StringMessage.class, msg -> {
-                    stringMessageHandler.tell(msg, noSender());
+                .match(StringMessage.class, message -> {
+                    stringMessageHandler.tell(message, noSender());
                 })
                 .build();
     }
